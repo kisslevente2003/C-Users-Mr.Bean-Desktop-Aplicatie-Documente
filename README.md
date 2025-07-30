@@ -1,373 +1,342 @@
-# 💰 Evidența Cheltuielilor
+# Tutorial: Cum să instalez și să rulez aplicația offline pe calculatorul meu
 
-> Aplicație web modernă pentru gestionarea bugetului personal cu rapoarte avansate și bază de date locală
+## Ce este această aplicație?
 
-[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/kisslevente2003/evidenta-cheltuieli)
-[![Node.js](https://img.shields.io/badge/node-%3E%3D18.0.0-green.svg)](https://nodejs.org/)
-[![TypeScript](https://img.shields.io/badge/typescript-%5E5.2.2-blue.svg)](https://www.typescriptlang.org/)
-[![React](https://img.shields.io/badge/react-18.2.0-blue.svg)](https://reactjs.org/)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+Aceasta este o aplicație web pentru completarea automată a documentelor **ANEXA 1** și **ANEXA 2** - cereri pentru persoane cu handicap. Aplicația funcționează în browser și poate rula complet offline pe calculatorul dumneavoastră.
 
-## ✨ Caracteristici Principale
+## De ce programe am nevoie?
 
-### 🎯 **Gestionare Completă a Cheltuielilor**
-- **Rate și Împrumuturi**: CEC mașină, Banca Transilvania (1-6 rate), Casco (4 rate)
-- **Utilități**: Gaze, Curent, Apă, Gunoi, Asociație cu citiri contoare
-- **Servicii**: Vodafone, Digi și alte abonamente
-- **Streaming**: Netflix, Prime Video, Sky Showtime, Spotify
-- **Venituri**: Pensii, indemnizații și alte intrări
+Pentru a rula această aplicație pe calculatorul dumneavoastră, veți avea nevoie de:
 
-### 📊 **Rapoarte Avansate**
-- **Dashboard KPI**: Total cheltuieli, venituri, bilanț, rata economii
-- **Grafice Interactive**: Line charts, pie charts, bar charts, area charts
-- **Analiză Temporală**: Comparații lunare, anuale, tendințe
-- **Export Date**: CSV pentru Excel, rapoarte formatate
-- **Insights Inteligente**: Recomandări de optimizare
+1. **Node.js** - programul care face aplicația să funcționeze
+2. **Git** - programul pentru descărcarea codului aplicației
+3. **Un browser web** - Chrome, Firefox, Safari, sau Edge
+4. **Un editor de text** (opțional) - pentru a vedea codul
 
-### 💾 **Bază de Date Locală**
-- **SQLite + Prisma**: Persistența datelor fără server extern
-- **Backup Automat**: Datele sunt salvate local, sigur
-- **Migrări**: Actualizări automate ale structurii
+## Pas 1: Instalarea Node.js
 
-### 🎨 **Interface Modernă**
-- **Design Responsive**: Funcționează pe desktop, tabletă, mobil
-- **Dark/Light Mode**: Suport pentru preferințele utilizatorului  
-- **Animații Fluide**: Tranziții plăcute cu Motion
-- **Componente Premium**: Shadcn/UI + Radix UI
+### Pentru Windows:
 
-## 🚀 Instalare Rapidă
+1. Mergeți pe site-ul oficial: **https://nodejs.org**
+2. Descărcați versiunea **LTS** (versiunea recomandată) - va fi un fișier cu numele similar cu `node-v20.x.x-x64.msi`
+3. Rulați fișierul descărcat și urmați instrucțiunile de instalare
+4. Apăsați **Next** → **Next** → **Install** → **Finish**
+5. Restartați calculatorul
 
-### Metodă Automată (Recomandată)
+### Pentru Mac:
 
+1. Mergeți pe site-ul oficial: **https://nodejs.org**
+2. Descărcați versiunea **LTS** pentru Mac - va fi un fișier `.pkg`
+3. Deschideți fișierul descărcat și urmați instrucțiunile
+4. Introduceți parola de administrator când vi se cere
+5. Restartați calculatorul
+
+### Pentru Linux (Ubuntu/Debian):
+
+1. Deschideți **Terminal**
+2. Copiați și lipiți această comandă:
+   ```bash
+   curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+   sudo apt-get install -y nodejs
+   ```
+3. Introduceți parola când vi se cere
+
+## Pas 2: Instalarea Git
+
+### Pentru Windows:
+
+1. Mergeți pe: **https://git-scm.com/download/windows**
+2. Descărcați fișierul (se va descărca automat)
+3. Rulați fișierul și instalați cu setările implicite
+4. Apăsați **Next** la toate opțiunile și **Install** la final
+
+### Pentru Mac:
+
+1. Mergeți pe: **https://git-scm.com/download/mac**
+2. Descărcați fișierul pentru Mac
+3. Instalați urmând instrucțiunile
+
+### Pentru Linux:
+
+Deschideți **Terminal** și tastați:
 ```bash
-# 1. Clonează repository-ul
-git clone https://github.com/kisslevente2003/evidenta-cheltuieli.git
-cd evidenta-cheltuieli
-
-# 2. Windows
-setup.bat
-
-# 2. Linux/macOS  
-chmod +x setup.sh && ./setup.sh
-
-# 3. Pornește aplicația
-npm run dev
+sudo apt-get update
+sudo apt-get install git
 ```
 
-### Metodă Manuală
+## Pas 3: Verificarea instalării
 
-```bash
-# 1. Instalează dependințele
+Pentru a verifica că totul s-a instalat corect:
+
+### Pe Windows:
+1. Apăsați **Windows + R**
+2. Tastați `cmd` și apăsați **Enter**
+3. În fereastra neagră care se deschide, tastați:
+   ```
+   node --version
+   ```
+4. Ar trebui să vedeți ceva similar cu `v20.9.0`
+5. Apoi tastați:
+   ```
+   git --version
+   ```
+6. Ar trebui să vedeți ceva similar cu `git version 2.42.0`
+
+### Pe Mac:
+1. Apăsați **Cmd + Spațiu**
+2. Tastați `terminal` și apăsați **Enter**
+3. Urmați aceiași pași ca pentru Windows (comenzile sunt identice)
+
+### Pe Linux:
+1. Deschideți **Terminal**
+2. Urmați aceiași pași ca pentru Windows
+
+**Important**: Dacă vedeți numere de versiuni, înseamnă că totul este instalat corect!
+
+## Pas 4: Descărcarea aplicației
+
+1. Creați un folder nou pe Desktop numit `Aplicatie-Documente`
+2. Deschideți **Command Prompt** (Windows) sau **Terminal** (Mac/Linux)
+3. Navigați către folder-ul creat:
+
+   **Pe Windows:**
+   ```
+   cd Desktop\Aplicatie-Documente
+   ```
+
+   **Pe Mac/Linux:**
+   ```
+   cd Desktop/Aplicatie-Documente
+   ```
+
+4. Descărcați aplicația tastând:
+   ```
+   git clone [URL-ul aplicației] .
+   ```
+   
+   **Notă**: Înlocuiți `[URL-ul aplicației]` cu link-ul real către aplicație pe GitHub.
+
+5. **IMPORTANT**: După descărcare, verificați că aveți fișierul `package.json` în folder. Dacă nu îl aveți, recreați-l cu următorul conținut:
+
+   Creați un fișier nou numit `package.json` și copiați conținutul din secțiunea "Conținut package.json" de mai jos.
+
+## Pas 5: Instalarea dependințelor
+
+În aceeași fereastră de comandă, tastați:
+
+```
 npm install
+```
 
-# 2. Configurează baza de date
-npm run db:generate
-npm run db:push
-npm run db:seed
+**Ce se întâmplă**: Această comandă descarcă toate bibliotecile de care aplicația are nevoie. Procesul poate dura 2-5 minute.
 
-# 3. Pornește aplicația
+**Când e gata**: Veți vedea că nu mai apar mesaje și cursorul revine la prompt.
+
+## Pas 6: Pornirea aplicației
+
+Pentru a porni aplicația, tastați una din următoarele comenzi:
+
+```
+npm start
+```
+
+**SAU**
+
+```
 npm run dev
 ```
 
-Aplicația va fi disponibilă la: **http://localhost:3000**
+**IMPORTANT**: Nu folosiți comanda `npm run db:push` - aceasta nu este necesară pentru această aplicație!
 
-## 📋 Cerințe de Sistem
+**Ce se întâmplă**:
+- Se va afișa text în fereastră similar cu "Starting development server..."
+- După 30-60 de secunde, browserul se va deschide automat la adresa `http://localhost:3000`
+- Dacă browserul nu se deschide automat, deschideți-l manual și accesați: **http://localhost:3000**
 
-| Componenta | Versiune Minimă | Recomandată |
-|-----------|------------------|-------------|
-| **Node.js** | 18.0.0 | 20.x LTS |
-| **npm** | 8.0.0 | 10.x |
-| **RAM** | 4 GB | 8 GB |
-| **Spațiu Disk** | 500 MB | 1 GB |
-| **Browser** | Chrome 90+ | Chrome/Edge/Firefox Latest |
+## Pas 7: Utilizarea aplicației
 
-### Sisteme de Operare Suportate:
-- ✅ Windows 10/11
-- ✅ macOS 10.15+
-- ✅ Linux (Ubuntu 18.04+, Debian 10+)
+Odată ce aplicația s-a deschis în browser:
 
-## 🛠️ Stack Tehnologic
+1. **Adăugați persoane**: Folosiți butonul "Adaugă persoană nouă" pentru a introduce datele
+2. **Selectați tipul de document**: Alegeți între ANEXA 1 sau ANEXA 2
+3. **Completați documentul**: Selectați persoana din listă pentru completarea automată
+4. **Salvați PDF**: Folosiți butonul "Salvează PDF" pentru a descărca documentul
 
-### Frontend
-- **⚡ Vite**: Build tool rapid și modern
-- **⚛️ React 18**: UI library cu hooks și Suspense
-- **🎨 TypeScript**: Type safety și IntelliSense
-- **💅 Tailwind CSS**: Utility-first styling
-- **🧩 Shadcn/UI**: Componente high-quality
-- **📊 Recharts**: Grafice interactive
-- **🎭 Motion**: Animații fluide
+## Cum opresc aplicația?
 
-### Backend & Database
-- **💾 SQLite**: Bază de date locală, fără server
-- **🔄 Prisma**: ORM type-safe
-- **📝 TypeScript**: Validare tipuri la compile-time
+Pentru a opri aplicația:
+1. Mergeți în fereastra de comandă unde rulează aplicația
+2. Apăsați **Ctrl + C** (pe toate sistemele de operare)
+3. Confirmați cu **Y** dacă vi se cere
 
-### Development
-- **🔨 ESLint + Prettier**: Code quality
-- **🧪 Vitest**: Unit testing (în curând)
-- **🚀 GitHub Actions**: CI/CD (în curând)
+## Cum pornesc aplicația din nou?
 
-## 📖 Documentație
+Pentru a porni aplicația din nou:
+1. Deschideți **Command Prompt** sau **Terminal**
+2. Navigați către folder-ul aplicației:
+   ```
+   cd Desktop/Aplicatie-Documente
+   ```
+3. Rulați una din aceste comenzi:
+   ```
+   npm start
+   ```
+   **SAU**
+   ```
+   npm run dev
+   ```
 
-### 📁 Structura Proiectului
+**Atenție**: Nu folosiți comenzi ca `npm run db:push`, `npm run db:migrate` sau alte comenzi cu "db:" - acestea nu sunt necesare!
 
-```
-evidenta-cheltuieli/
-├── 📂 prisma/              # Baza de date
-│   ├── schema.prisma       # Schema Prisma
-│   ├── seed.ts             # Date inițiale
-│   └── expenses.db         # SQLite database
-├── 📂 components/          # Componente React
-│   ├── ui/                 # Shadcn/UI components
-│   ├── MonthExpenses.tsx   # Gestionare lună
-│   ├── ReportsView.tsx     # Rapoarte
-│   └── ...
-├── 📂 src/
-│   ├── lib/                # Utilities
-│   │   └── database.ts     # Database manager
-│   └── main.tsx            # Entry point
-├── 📂 styles/
-│   └── globals.css         # Tailwind + custom CSS
-├── 📂 types/
-│   └── expense.ts          # TypeScript definitions
-├── package.json            # Dependencies
-├── vite.config.ts          # Vite configuration
-└── README.md               # Această documentație
-```
+## Probleme comune și soluții
 
-### 🎛️ Comenzi Disponibile
+### "npm error Missing script: db:push" sau comenzi similare cu "db:"
+- **Explicație**: Această aplicație NU folosește o bază de date externă! Toate datele se salvează local în browser.
+- **Soluție**: Folosiți doar `npm start` sau `npm run dev` pentru a porni aplicația.
 
-```bash
-# Dezvoltare
-npm run dev              # Pornește dev server
-npm run build            # Build pentru producție
-npm run preview          # Preview build local
+### "node is not recognized" sau "command not found"
+- **Soluție**: Node.js nu s-a instalat corect. Reinstalați Node.js și restartați calculatorul.
 
-# Baza de date
-npm run db:studio        # Prisma Studio (GUI)
-npm run db:generate      # Generează client Prisma
-npm run db:push          # Aplică schema în DB
-npm run db:seed          # Populează cu date test
+### "npm install" nu funcționează
+- **Soluție**: Verificați conexiunea la internet. Încercați din nou după câteva minute.
 
-# Utilități
-npm run start            # Setup complet + dev
-npm install              # Reinstalează dependințele
-```
+### Aplicația nu se deschide în browser
+- **Soluție**: Deschideți manual browserul și accesați: **http://localhost:3000**
 
-## 💡 Ghid de Utilizare
+### "Port 3000 is already in use"
+- **Soluție**: Închideți toate ferestrele de browser și programele care ar putea folosi portul 3000, apoi încercați din nou.
 
-### 1️⃣ **Selectarea Perioadei**
-- **Pagina Principală**: Calendar cu ani 2000-2050
-- **Vizualizare An**: Toate lunile dintr-un an
-- **Vizualizare Lună**: Cheltuieli detaliate pe lună
+## Funcționare offline
 
-### 2️⃣ **Adăugarea Cheltuielilor**
+**Odată instalată, aplicația funcționează complet offline!**
 
-#### 🏦 Rate și Împrumuturi:
-- **CEC Mașină**: Rată fixă lunară
-- **Banca Transilvania**: 1, 4 sau 6 rate cu date și sume
-- **Casco**: 4 rate (Rata I-IV) cu date și sume personalizabile
+- Nu aveți nevoie de internet pentru a o folosi
+- Toate datele se salvează local pe calculatorul dumneavoastră
+- PDF-urile se generează local, fără să trimiteți informații pe internet
 
-#### ⚡ Utilități:
-- **Contoare** (Gaze, Curent, Apă): Citiri anterioare/curente + preț/unitate
-- **Fixe** (Gunoi, Asociație): Sume fixe
+## Backup-ul datelor
 
-#### 📱 Servicii & Streaming:
-- Sume fixe lunare pentru abonamente
+Datele persoanelor se salvează automat în browser. Pentru siguranță:
 
-#### 💰 Venituri:
-- Pensii, indemnizații, salarii
+1. **Exportați datele periodic** folosind opțiunile din aplicație
+2. **Faceți backup la folder-ul aplicației** copiind întregul folder `Aplicatie-Documente`
 
-### 3️⃣ **Rapoarte și Analize**
-- **Context-aware**: Rapoarte pentru lună, an sau perioada generală
-- **KPI Dashboard**: Metrici cheie în timp real
-- **Grafice Multiple**: Line, bar, pie, area charts
-- **Export**: CSV pentru Excel
-- **Insights**: Recomandări automate de optimizare
+## Actualizarea aplicației
 
-### 4️⃣ **Servicii Custom**
-- **Adăugare**: Servicii noi în orice categorie
-- **Ștergere**: Cu confirmare dublă pentru siguranță
-- **Replicare**: Serviciile se adaugă automat în lunile viitoare
+Pentru a primi actualizări:
 
-## 🔧 Configurare Avansată
+1. Deschideți **Command Prompt** sau **Terminal**
+2. Navigați către folder-ul aplicației
+3. Tastați:
+   ```
+   git pull
+   npm install
+   ```
 
-### Environment Variables (.env)
+## Suport tehnic
 
-```env
-# Database
-DATABASE_URL="file:./prisma/expenses.db"
+Pentru probleme tehnice sau întrebări:
+- Verificați că ați urmat toți pașii în ordine
+- Restartați calculatorul și încercați din nou
+- Contactați persoana care v-a furnizat aplicația
 
-# App Configuration
-VITE_APP_NAME="Evidența Cheltuielilor"
-VITE_APP_VERSION="1.0.0"
+## Despre stocarea datelor
 
-# Development
-VITE_DEV_PORT=3000
-VITE_DEV_HOST=localhost
+**IMPORTANT**: Această aplicație nu folosește o bază de date externă!
 
-# Features
-VITE_ENABLE_PWA=false
-VITE_ENABLE_ANALYTICS=false
-```
+- Toate datele persoanelor se salvează automat în **localStorage** (memoria browserului)
+- Nu există comenzi de tip `npm run db:push` sau `npm run db:migrate`
+- Nu aveți nevoie să configurați nicio bază de date
+- Aplicația funcționează complet offline după prima instalare
 
-### Customizare Categorii
+## Comenzile corecte pentru această aplicație
 
-Poți adăuga categorii noi în `types/expense.ts`:
+✅ **Comenzi CORECTE** (folosiți acestea):
+- `npm install` - pentru instalarea dependințelor
+- `npm start` - pentru pornirea aplicației
+- `npm run dev` - alternativă pentru pornirea aplicației
 
-```typescript
-export type ExpenseCategory = 
-  | 'rate' 
-  | 'utilitati' 
-  | 'servicii' 
-  | 'streaming' 
-  | 'venituri'
-  | 'noua_categorie'  // Adaugă aici
-```
+❌ **Comenzi GREȘITE** (NU le folosiți):
+- `npm run db:push` - NU există în această aplicație
+- `npm run db:migrate` - NU există în această aplicație
+- `npm run db:seed` - NU există în această aplicație
 
-## 🐛 Depanare Probleme
+## Conținut package.json
 
-### ❌ Probleme Comune
+Dacă fișierul `package.json` nu există sau este gol, creați-l cu următorul conținut:
 
-<details>
-<summary><strong>"command not found: node"</strong></summary>
-
-**Cauza**: Node.js nu este instalat sau nu este în PATH.
-
-**Soluție**:
-```bash
-# Verifică instalarea
-node --version
-npm --version
-
-# Reinstalează Node.js de la nodejs.org
-```
-</details>
-
-<details>
-<summary><strong>"Permission denied" pe Linux/macOS</strong></summary>
-
-**Cauza**: Permisiuni insuficiente.
-
-**Soluție**:
-```bash
-# Opțiunea 1: folosește nvm (recomandat)
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-nvm install node
-
-# Opțiunea 2: schimbă ownership pentru npm
-sudo chown -R $(whoami) ~/.npm
-```
-</details>
-
-<details>
-<summary><strong>Port 3000 ocupat</strong></summary>
-
-**Soluție**:
-```bash
-# Folosește alt port
-npm run dev -- --port 3001
-
-# Sau oprește procesul pe port 3000
-# Windows
-netstat -ano | findstr :3000
-taskkill /PID <PID> /F
-
-# Linux/macOS
-lsof -ti:3000 | xargs kill -9
-```
-</details>
-
-<details>
-<summary><strong>Baza de date coruptă</strong></summary>
-
-**Soluție**:
-```bash
-# Reset complet bază de date
-npm run db:push --force-reset
-npm run db:seed
-```
-</details>
-
-## 📈 Roadmap Viitor
-
-### 🔜 Versiunea 1.1 (Q2 2025)
-- [ ] **PWA Support**: Instalare ca aplicație nativă
-- [ ] **Dark Mode Toggle**: Switch manual pentru teme
-- [ ] **Backup/Restore**: Export/import complete database
-- [ ] **Multi-currency**: Suport pentru EUR, USD
-- [ ] **Recurring Expenses**: Cheltuieli recurente automate
-
-### 🔮 Versiunea 1.2 (Q3 2025)
-- [ ] **Mobile App**: React Native pentru iOS/Android
-- [ ] **Cloud Sync**: Sincronizare opțională în cloud
-- [ ] **AI Insights**: Predicții și recomandări AI
-- [ ] **Banking Integration**: Import automat din bănci
-- [ ] **Team Sharing**: Buget familiar colaborativ
-
-### 🚀 Versiunea 2.0 (Q4 2025)
-- [ ] **Multi-tenant**: Suport pentru organizații
-- [ ] **Advanced Analytics**: Machine learning pentru patterns
-- [ ] **API REST**: Integrări cu alte aplicații
-- [ ] **Plugin System**: Extensii dezvoltate de comunitate
-
-## 🤝 Contribuții
-
-Contribuțiile sunt binevenite! Pentru a contribui:
-
-1. **Fork** repository-ul
-2. **Creează** branch pentru feature: `git checkout -b feature/nume-feature`
-3. **Commit** schimbările: `git commit -m 'Add some feature'`
-4. **Push** pe branch: `git push origin feature/nume-feature`
-5. **Deschide** Pull Request
-
-### 📝 Guidelines pentru Contribuții
-
-- **Code Style**: Folosește Prettier și ESLint
-- **Commits**: Conventional commits format
-- **Testing**: Adaugă teste pentru funcționalități noi
-- **Documentation**: Actualizează README și comentariile
-
-## 📄 Licență
-
-Acest proiect este licențiat sub **MIT License**.
-
-```
-MIT License
-
-Copyright (c) 2025 kisslevente2003
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software...
+```json
+{
+  "name": "anexa-documente-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "start": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "lucide-react": "^0.263.1",
+    "@radix-ui/react-slot": "^1.0.2",
+    "@radix-ui/react-dialog": "^1.0.4",
+    "@radix-ui/react-select": "^1.2.2",
+    "@radix-ui/react-checkbox": "^1.0.4",
+    "@radix-ui/react-alert-dialog": "^1.0.4",
+    "@radix-ui/react-dropdown-menu": "^2.0.5",
+    "@radix-ui/react-label": "^2.0.2",
+    "@radix-ui/react-popover": "^1.0.6",
+    "@radix-ui/react-separator": "^1.0.3",
+    "@radix-ui/react-toast": "^1.1.4",
+    "@radix-ui/react-tooltip": "^1.0.6",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
+    "tailwind-merge": "^1.14.0",
+    "date-fns": "^2.30.0",
+    "react-day-picker": "^8.8.2"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "@vitejs/plugin-react": "^4.0.3",
+    "eslint": "^8.45.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.3",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5",
+    "tailwindcss": "^4.0.0"
+  }
+}
 ```
 
-Vezi [LICENSE](LICENSE) pentru textul complet.
+## Structura de fișiere necesară
 
-## 👨‍💻 Autor
+După instalare, proiectul ar trebui să aibă următoarea structură:
 
-**Levente Kiss** (kisslevente2003)
-- GitHub: [@kisslevente2003](https://github.com/kisslevente2003)
-- Repository: [evidenta-cheltuieli](https://github.com/kisslevente2003/evidenta-cheltuieli)
-
-## 🙏 Mulțumiri
-
-Mulțumiri speciale pentru:
-
-- **Shadcn/UI** pentru componentele exceptionale
-- **Prisma Team** pentru ORM-ul fantastic
-- **Vercel** pentru Vite și ecosistemul React
-- **Tailwind Labs** pentru framework-ul CSS
-- **Recharts Team** pentru librăria de grafice
+```
+Aplicatie-Documente/
+├── src/
+│   ├── App.tsx
+│   └── main.tsx
+├── components/
+│   ├── Anexa1.tsx
+│   ├── Document.tsx
+│   ├── DocumentForm.tsx
+│   ├── PersonManager.tsx
+│   └── ui/
+├── styles/
+│   └── globals.css
+├── index.html
+├── package.json
+├── vite.config.ts
+└── README.md
+```
 
 ---
 
-<div align="center">
-
-**⭐ Dacă îți place proiectul, oferă-i un star pe GitHub! ⭐**
-
-[📚 Documentație](README.md) · [🐛 Raportează Bug](https://github.com/kisslevente2003/evidenta-cheltuieli/issues) · [💡 Sugerează Feature](https://github.com/kisslevente2003/evidenta-cheltuieli/issues)
-
-</div>
+**Notă importantă**: Această aplicație respectă complet confidențialitatea. Toate datele rămân pe calculatorul dumneavoastră și nu sunt trimise nicăieri pe internet.
